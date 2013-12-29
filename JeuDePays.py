@@ -25,13 +25,13 @@ class JeuDePays:
         """
         self.listedepays = parsepays.obtenirListePays(langue)
 
-    def winner(self, winner):
+    def winner(self, vainqueur):
         """
         Sets the winner of the game
-        winner: an object of type Joueur. 
+        winner: the name of the winner 
         
         """
-        self.winner = winner
+        self.vainqueur = vainqueur
         
 class Joueur:
     """
