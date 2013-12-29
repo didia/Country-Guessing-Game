@@ -14,7 +14,7 @@ def obtenirListePays(langue):
     dans cette langue.
     """
     # ouvrir un fichier selon la langue fournie
-    fin = open('countrylist.txt', encoding="utf-8") if langue.lower() == 'en' else open('listepays.txt', encoding="utf-8")
+    fin = open('../text/countrylist.txt', encoding="utf-8") if langue.lower() == 'en' else open('../text/listepays.txt', encoding="utf-8")
 
     listepays = []
     prelistepays = []

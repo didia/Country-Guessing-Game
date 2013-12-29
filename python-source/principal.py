@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from JeuDePays import *
-import random
+
 
 """
 Ceci est le module qui contient le jeu de pays. Un joueur va jouer contre
@@ -41,15 +41,15 @@ while True:
             print('You should enter a number between 1 and 5')
         
     cpu = Cpu(jeu1, level)
-    while(not joueur1.choisirPays(input("Entrez votre pays, {}:".format(joueur1)), jeu1)):
-        if joueur1.choisirPays(input("Entrez un pays qui existe:"),jeu1): break;
+    while(not joueur1.choisirPays(input("Entrez votre pays, {}:".format(joueur1)).strip(), jeu1)):
+        if joueur1.choisirPays(input("Entrez un pays qui existe:").strip(),jeu1): break;
     joueur1.initiateOppInfo(cpu)
     cpu.initiateOppInfo(joueur1)
 
     print('Judge says: Le Pays de << {} >> a {} lettres et Celui de << CPU>> a {} lettres'\
           .format(joueur1, len(joueur1.pays), len(cpu.pays)))
     while True:
-        requete = input('Aristote: Demandez si le pays de CPU a ou est : ')
+        requete = input('{}: Demandez si le pays de CPU a ou est : '.format(str(joueur1)))
         reponse = joueur1.asTu(requete, cpu) if len(requete) == 1 else joueur1.estCeTonPays(requete, cpu)
         if len(requete) != 1:
             if reponse:
@@ -59,9 +59,9 @@ while True:
             else:
                 print('CPU says: Mon pays n\'est pas "{}"'.format(requete))
         elif reponse:
-          print('CPU says: Mon pays a "{}" a la (aux) position(s) {}'.format(requete, reponse))
+            print('CPU says: Mon pays a "{}" a la (aux) position(s) {}'.format(requete, reponse))
         else:
-          print('CPU says: Mon pays n\'a pas "{}"'.format(requete))
+            print('CPU says: Mon pays n\'a pas "{}"'.format(requete))
 
         if cpu.matchedcountry: #Check if the cpu has already started guessing
             guess = cpu.pick() #if yes then cpu must guess the country
@@ -84,9 +84,9 @@ while True:
         reponse = cpu.asTu(joueur1)
 
         if reponse[1]:
-          print('Judge says: CPU a trouve la lettre "{}" a la (aux) position(s) {} de votre pays'.format(reponse[0], reponse[1]))
+            print('Judge says: CPU a trouve la lettre "{}" a la (aux) position(s) {} de votre pays'.format(reponse[0], reponse[1]))
         else:
-          print('Judge says: CPU n\'a pas trouve "{}" dans votre pays'.format(reponse[0]))
+            print('Judge says: CPU n\'a pas trouve "{}" dans votre pays'.format(reponse[0]))
         print('*'*10 + ' EVOLUTION ' + '*'*10)
         print('*'+' '*29+'*')
         print('*'+' '*9+ ' '.join(joueur1.opppays)+' '*8+'*')
