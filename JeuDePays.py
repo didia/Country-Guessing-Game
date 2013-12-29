@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-Ce module renferme toutes les classes et fonctionnalites utiles au jeu de pays.
+This module contains all the main functionalities of the game!
 """
 
 __auteur__ = "Thefuture2092"
@@ -15,19 +15,21 @@ import re
 
 class JeuDePays:
     """
-    Cette classe definit une nouvelle partie
+    This class encapsulates a party
     """
 
     def __init__(self, langue):
         """
-        string langue: dans quelle langue on veut jouer
-        Cree une nouvelle instance du jeu dans la langue donnee.
+        string langue: the language of the game
+        Create a game with the given language.
         """
         self.listedepays = parsepays.obtenirListePays(langue)
 
     def winner(self, winner):
         """
-        winner: type Joueur, definit le joueur qui a gagnE le jeu self 
+        Sets the winner of the game
+        winner: an object of type Joueur. 
+        
         """
         self.winner = winner
         

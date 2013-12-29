@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 from JeuDePays import *
 import random
 
@@ -7,17 +10,18 @@ le CPU. Ils doivent les deux choisir un pays et tenter de decouvir le pays de l'
 celui qui decouvre le pays de l'autre avant a gagne.
 """
 __auteur__ = "Thefuture2092"
+
 print('Ceci est un jeu de pays')
 print('*#='*8)
 print('*#='*8)
-print('   '*8)zzz
-langue = input('Which language?/Quelle langue? "en" for english/"fr" pour le francais: ')
-while(langue != 'en' and langue != 'fr'):
-    langue = input('Enter "en" for english/Entrez "fr" pour le francais: ')
+print('   '*8)
+langue = input("Which language?/Quelle langue? 'en' for english/'fr' pour le francais: ")
+while(langue != "en" and langue != "fr"):
+    langue = input("Enter 'en' for english/Entrez 'fr' pour le francais: ")
 jeu1 = JeuDePays(langue.lower())
 
 
-joueur1 = Joueur(input('Bienvenue! Quelle est votre nom?: ') if langue.lower() == 'fr' else \
+joueur1 = Joueur(input('Bienvenue! Quelle est votre nom?: ') if langue.lower() == "fr" else \
        input('Welcome! What\'s your name?: '))
 
 print('*#'*40)

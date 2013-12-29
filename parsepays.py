@@ -14,11 +14,13 @@ def obtenirListePays(langue):
     dans cette langue.
     """
     # ouvrir un fichier selon la langue fournie
-    fin = open('countrylist.txt', 'r') if langue.lower() == 'en' else open('listepays.txt')
+    fin = open('countrylist.txt', encoding="utf-8") if langue.lower() == 'en' else open('listePaysFr.txt', encoding="utf-8")
 
     listepays = []
     prelistepays = []
+    
     for l in fin:
+        
         prelistepays.append(l.replace('\x00','').strip().lower())
     for l in prelistepays:
         if l:
