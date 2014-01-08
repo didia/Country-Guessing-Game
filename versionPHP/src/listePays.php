@@ -35,12 +35,12 @@ function obtenirListePays($langue)
 		fclose($handle);
 	}
 	
-	foreach($tableauPays as &$value)
+	/*foreach($tableauPays as &$value)
 	{
 		echo $value;
 	}
-	return $tableauPays;
-	
+	*/
+	return $tableauPays;	
 }
 
 ?>

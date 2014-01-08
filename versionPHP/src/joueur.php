@@ -6,16 +6,17 @@ class Joueur
 {
 	
 	private  $pays ;
-	private   $pseudo;
+	private  $pseudo;
 	private $langue;
 	private $actif = false;
+	private $opppays;
 
 	/**
 	*Construir a partir des information de la base de données
 	*/
 	public function __construct($idUser)
 	{
-		include("./Connexion/conex.php");
+		
 		$mysqli  = connexion();
 		if ($result = $mysqli->query("SELECT * FROM joueurs WHERE  id = '$idUser'", MYSQLI_USE_RESULT))
 		{
@@ -89,9 +90,10 @@ class Joueur
 	*choisir le pays
 	*/
 	
-	public function choisisPays(string $pays, array $listePays)
+	public function choisisPays(string $pays, $jeu)
 	{
 		//verifier si le pays choisi est valide
+		$listePays = $jeu->getListePays();
 		if(in_array($pays, $listePays))
 		{
 			return true;
@@ -155,8 +157,9 @@ class Joueur
 	   */
 	public function  initiateOppInfo($adversaire)
     {
-		for($i = 0; $i<strlen($adversaire.pays); ++$i); 
-        $this->opppays = $this->opppays.join('?');
+		$opppaysArray = str_split($this->opppays);
+		for($i = 0; $i<strlen($adversaire.pays); ++$i) 
+        	$this->$opppaysArray[$i] = '?';
 	}
 	
 	/**
@@ -172,7 +175,8 @@ class Joueur
 	
 	public function getLenOpppays()
 	{
-		return mb_substr_count($this->opppays , '?');
+	
+		return mb_substr_count($opppaysStr , '?');
 	}
 	
 }
