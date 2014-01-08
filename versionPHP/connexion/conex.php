@@ -1,8 +1,18 @@
 <?php
-$serveur="127.0.0.1";
-$utilisateur="root";
-$pass="";
-$base="gamepays";
-mysql_connect($serveur,$utilisateur,$pass);
-mysql_select_db($base);
+function connexion()
+{
+	$serveur="127.0.0.1";
+	$user="root";
+	$pass="";
+	$mysqli = new mysqli("localhost", $user, $pass, "gamepays");
+	
+	/* Vérification de la connexion */
+	if ($mysqli->connect_errno) {
+		printf("Échec de la connexion : %s\n", $mysqli->connect_error);
+		exit();
+	}
+
+	return $mysqli;
+}
+
 ?>

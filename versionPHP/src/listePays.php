@@ -1,4 +1,4 @@
-
+﻿
 <?php
 
 #Auteur: Patrice 
@@ -9,9 +9,17 @@
 
 function obtenirListePays($langue)
 {
-	$tableauPats  = array();
+	$tableauPays  = array();
 	//ouverture du fichier en lecture seule
-	$handle = fopen('text/listepays.tx', 'r');
+	if(strtolower($langue )== "fr") 
+	{
+	$handle = fopen('./text/listepays.txt', 'r');
+	}
+	else if(strtolower($langue )== "en") 
+	{
+		$handle = fopen('./text/countrylist.txt', 'r');
+	
+	}
 	//si l'ouverture est reussi
 	if($handle)
 	{
@@ -20,14 +28,19 @@ function obtenirListePays($langue)
 		{
 			//on lit la ligne courante
 			$buffer = fgets($handle);
-			array_push($tableauPats, $buffer);
+			array_push($tableauPays, $buffer);
 		}
 		
 		//on ferme le fichier
 		fclose($handle);
 	}
 	
-	return $tableauPats;
+	foreach($tableauPays as &$value)
+	{
+		echo $value;
+	}
+	return $tableauPays;
+	
 }
 
 ?>

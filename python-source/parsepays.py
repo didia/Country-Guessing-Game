@@ -32,4 +32,6 @@ def obtenirListePays(langue):
     #print(listepays)
 
 
-                
+        
+
+E_ALL | E_STRICT        
