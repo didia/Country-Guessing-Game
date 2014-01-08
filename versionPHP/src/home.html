@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+        <link rel="stylesheet" href="../css/normalize.css">
+        <link rel="stylesheet" href="../css/main.css">
+        <script src="../js/vendor/modernizr-2.6.2.min.js"></script>
+    </head>
+
+<div id="container">
+<div id="header">
+<header>
+<h1>Bienvenue au Jeu De Pays </h1>
+</header>
+</div><br/>
+<div id="sub-container">
+<div id="nav-bar">
+<nav>
+<ul>
+<a href="#"><li class="button">Jouer </li></a>
+<a href="#" ><li class="button"> C'est quoi le jeu?</li></a>
+<a href="#" ><li class="button"> Auteurs </li></a>
+</ul>
+</nav>
+</div>
+<div id="central-content">
+<div id="ecran-geant">
+<span>Johny prêt à t'affronter</span>
+</div>
+<br>
+<div>
+<form id="start-form">
+<ul>
+<li>
+<label for="pseudo">Choisissez un pseudo</label><br/>
+<input  type="text" name = "pseudo" placeholder="Entrez votre pseudo">
+</li>
+<li>
+<label for="opponent"> Choisissez votre adversaire </label><br/>
+<input type="radio" name="opponent" value="cpu" checked readonly>Johny, Le robot
+</li>
+<li>
+<label for="niveau"> Choisissez le niveau de Johny </label><br/>
+<select name="niveau">
+<option value="1"> Johny, Niveau 1 </option>
+<option value="2"> Johny, Niveau 2 </option>
+<option value="3" selected> Johny, Niveau 3 </option>
+<option value="4"> Johny, Niveau 4 </option>
+<option value="5"> Johny, Niveau 5 </option>
+</select>
+</li>
+</ul>
+
+<a href="#" class="start-button"> Commencer partie </a>
+
+
+</form>
+</div>
+</div>
+</div>
+
+
+</div>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="../js/vendor/jquery-1.9.0.min.js"><\/script>')</script>
+        <script src="../js/plugins.js"></script>
+        <script src="../js/main.js"></script>
+
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <script>
+            var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+            g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+            s.parentNode.insertBefore(g,s)}(document,'script'));
+        </script>
+</body>
+</html>

@@ -92,10 +92,111 @@ textarea {
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
+body
+{
+	background-image:url(../img/background.jpg);
+	
+}
+
+ul
+{
+	list-style:none;
+	padding-left:0;
+}
+
+#header
+{
+	text-align:center;
+	width:700px;
+	margin: 0 auto;
+}
+#header h1
+{
+	font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif;
+	font-weight:bold;
+	color:#C33;
+}
+
+#nav-bar
+{
+	float:left;
+	margin-right:50px;
+	
+}
+#nav-bar ul{
+	
+}
+.button
+{
+	background-color:#F60;
+	padding:10px 20px 10px 10px;
+	font-size:18px;
+	margin-bottom:10px;
+	border:2px;
+	text-align:center;
+	border-bottom:6px #FF0000;
+	box-shadow:#666;
+	-moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.6);
+    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.6);
+    text-shadow: 0 -1px 1px rgba(0,0,0,0.25);
+
+}
+
+#nav-bar ul a
+{
+	text-decoration:none;
+}
+
+#central-content
+{
+	width:400px;
+	margin-right:auto;
+	margin-left:auto;
+}
+
+#ecran-geant{
+	background-color:#CCC;
+	border:3px;
+	border-radius:25px;
+	min-height:150px;
+	display:none;
+
+}
+#start-form{
+	font-size:18px;
+	text-align:center;
+	background-color:#CCC;
+	padding:0 0 15px 0;
+	
+}
 
 
 
-
+input, textarea {  
+    box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;  
+    -moz-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;  
+    -webkit-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px; 
+	background: -webkit-gradient(linear, left top, left 25, from(#FFFFFF), color-stop(4%, #EEEEEE), to(#FFFFFF));  
+    background: -moz-linear-gradient(top, #FFFFFF, #EEEEEE 1px, #FFFFFF 25px);   
+    } 
+	
+input:hover, textarea:hover,  
+input:focus, textarea:focus {   
+    -webkit-box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 8px;  
+    } 
+.start-button {  
+    width: auto;  
+    padding: 9px 15px;  
+    background: #617798;  
+    border: 0;  
+    font-size: 14px;  
+    color: #FFFFFF; 
+	margin-top:15px; 
+	-webkit-border-radius: 5px;  
+    -moz-border-radius: 5px; 
+    }  
 
 
 
