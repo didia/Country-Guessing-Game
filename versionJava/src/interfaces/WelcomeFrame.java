@@ -1,9 +1,9 @@
-package com.guessgame.interfaces;
+package interfaces;
 
 import javax.swing.*;
 
-import com.guessgame.GameData.CurrentConfiguration;
-import com.guessgame.helperClass.ButtonFactory;
+import GameData.CurrentConfiguration;
+import helperClass.ButtonFactory;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;

@@ -1,5 +1,5 @@
-package com.guessgame.launcher;
-import com.guessgame.interfaces.WelcomeFrame;
+package launcher;
+import interfaces.WelcomeFrame;
 
 public class Main {
 

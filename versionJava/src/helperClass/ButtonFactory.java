@@ -1,4 +1,4 @@
-package com.guessgame.helperClass;
+package helperClass;
 
 import java.awt.Dimension;
 import java.awt.Font;

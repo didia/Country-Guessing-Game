@@ -1,4 +1,4 @@
-package com.guessgame.GameData;
+package GameData;
 
 public class CurrentConfiguration {
 	

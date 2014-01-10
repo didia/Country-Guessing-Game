@@ -1,4 +1,4 @@
-package com.guessgame.interfaces;
+package interfaces;
 
 import javax.swing.*;
 import java.awt.*;
