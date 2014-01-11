@@ -13,11 +13,11 @@ function obtenirListePays($langue)
 	//ouverture du fichier en lecture seule
 	if(strtolower($langue )== "fr") 
 	{
-	$handle = fopen('./text/listepays.txt', 'r');
+	$handle = fopen('../text/listepays.txt', 'r');
 	}
 	else if(strtolower($langue )== "en") 
 	{
-		$handle = fopen('./text/countrylist.txt', 'r');
+		$handle = fopen('../text/countrylist.txt', 'r');
 	
 	}
 	//si l'ouverture est reussi

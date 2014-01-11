@@ -1,5 +1,5 @@
 <?php
-
+include ('listePays.php');
 function __autoload($class)
 {
     static $classDir = './src';
@@ -28,7 +28,7 @@ public function __construct($uneLangue)
 /**
 *
 */
-public function setVainqueur(string $leVainqueur)
+public function setVainqueur($leVainqueur)
 
 {
 	$this->vainqueur = $leVainqueur;
@@ -39,6 +39,10 @@ public function setVainqueur(string $leVainqueur)
 public function getListePays()
 {
 	return $this->listPays;
+}
+public function getLangue()
+{
+	return $thi->$langue;
 }
 
 }

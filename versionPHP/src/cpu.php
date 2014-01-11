@@ -5,11 +5,12 @@
 */
 class Cpu extends Joueur{
     
-   public static $levels = array(5=>0.7, 4=>0.6, 3=>0.5, 2=>0.4, 1=>0.3);
+   public $levels = array(5=>0.7, 4=>0.6, 3=>0.5, 2=>0.4, 1=>0.3);
    
    private $pays;
    private $level;
-   private $jeu;
+   private $jeu;	
+   private $opppays;
    private $listePays;
    private $paysIdentifie = array();
    private $lettresAposer = array('a','b','c','d','e','f','g','h','i','j','k','l','z','m','n','o','p','q','r','s','t','u','v','w','x','y');
@@ -19,11 +20,12 @@ class Cpu extends Joueur{
  
  public function  __construct($jeu, $level)
  {
-	  parent::__construct(1);
+	  parent::__construct(1,$pays,$jeu->getLangue());
 	  $listePays = $jeu->getListePays();
 	
 	  $rand_keys = array_rand($listePays, 2);
 	  $this->pays = $listePays[$rand_keys[0]];
+	  echo strlen($this->pays);
 	  $this->listePays = $listePays;
 	  $this->jeu = $jeu;
 	  $this->level = $level;
@@ -32,9 +34,18 @@ class Cpu extends Joueur{
  /**
  *
  */
+ 
  public  function getPays()
  {
 	 return $this->pays;
+ }
+  /**
+ *
+ */
+ 
+ public  function getoppPays()
+ {
+	 return $this->opppays;
  }
 
 /**
@@ -44,14 +55,14 @@ class Cpu extends Joueur{
 public function getpaysIdentifie()
  { 
 
-$m =array();
-	 $regex= str_replace('?', '.', parent::getOpppays());
+	 $regex= "/S:^gal/";//str_replace('?', '.', $this->getoppPays());
+	
 	  $listePays = $this->listePays;
 	 foreach( $listePays as $pays)
 	 {
-		 if(preg_match($regex, $pays, $m))
+		 if(preg_match_all($regex, $pays,$matches))
 		{
-			echo $pays;
+			echo "pays trouve: ".$matches[1];
 		}
 	 }
 	  
@@ -78,15 +89,29 @@ $m =array();
  
  public function asTu($joueur)
  {
-	 $lettreAposer = $this->lettresAposer;
-	 $rand_keys = array_rand($lettreAposer, 2);
-	 $requete = $lettreAposer[$rand_keys[0]]; 
-	 unset($this->lettresAposer[ array_keys($this->lettresAposer, $requete)]);
 	
-	return array('requete'=>$requete,'asTu' =>parent::asTu($requete, $joueur));	
+	$rand_keys = array_rand($this->lettresAposer, 2);
+	$requete = $this->lettresAposer[$rand_keys[0]];
+	 
+	$key =  array_search($requete, $this->lettresAposer); 
+	unset($this->lettresAposer[$key]);
+
+	return array($requete, parent::asTu($requete, $joueur));	
 	  
  }
  
+ /**
+ *
+ */
+ public function  initiateOppInfo($adversaire)
+    {
+		$opppaysArray = array();
+		
+		for($i = 0; $i<strlen($adversaire->getPays()); ++$i) 
+        	array_push($opppaysArray,'?');
+		$this->opppays = implode("", $opppaysArray);
+		
+	}
  
  /**
  *Cette fonction vérifie d'abord si c'est le temps de la CPU *pour commencer à devineropponnent Pays en fonction de la difficulté du jeu.
@@ -95,7 +120,8 @@ $m =array();
  
  public function isTimeToGuess($joueur)
  {
-	 if(parent::getLenOpppays()/strlen($joueur->getpays)>= $levels [$this->level-1]);
+	 
+	 if(parent::getLenOpppays()/strlen($joueur->getpays())>= $this->levels[$this->level-1]);
 	 {
 		 $this->getpaysIdentifie();
 	 }
