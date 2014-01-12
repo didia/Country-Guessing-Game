@@ -18,58 +18,60 @@
     </head>
 
 <div id="container">
-<div id="header">
-<header>
+
+<header id="header">
 <h1>Bienvenue au Jeu De Pays </h1>
 </header>
-</div><br/>
+
 <div id="sub-container">
-<div id="nav-bar">
-<nav>
+
+<div id="central-content">
+<div id="welcome-div">
 <ul>
-<a href="#"><li class="button">Jouer </li></a>
+<a href="#" onClick="showStartForm()"><li class="button">Jouer </li></a>
 <a href="#" ><li class="button"> C'est quoi le jeu?</li></a>
 <a href="#" ><li class="button"> Auteurs </li></a>
 </ul>
-</nav>
 </div>
-<div id="central-content">
+<div id = "game-panel">
 <div id="ecran-geant">
 <span>Johny prêt à t'affronter</span>
 </div>
-<br>
-<div>
+</div>
+<div id="start-div">
 <form id="start-form">
-<ul>
-<li>
-<label for="pseudo">Choisissez un pseudo</label><br/>
-<input  type="text" name = "pseudo" placeholder="Entrez votre pseudo">
-</li>
-<li>
-<label for="opponent"> Choisissez votre adversaire </label><br/>
-<input type="radio" name="opponent" value="cpu" checked readonly>Johny, Le robot
-</li>
-<li>
-<label for="niveau"> Choisissez le niveau de Johny </label><br/>
-<select name="niveau">
-<option value="1"> Johny, Niveau 1 </option>
-<option value="2"> Johny, Niveau 2 </option>
-<option value="3" selected> Johny, Niveau 3 </option>
-<option value="4"> Johny, Niveau 4 </option>
-<option value="5"> Johny, Niveau 5 </option>
+<div class = "control-group">
+<label for="pseudo" >Choisissez un pseudo</label>
+<div class="controls">
+<input  type="text" name = "pseudo" placeholder="Entrez votre pseudo" required>
+</div>
+</div>
+
+<div class = "control-group">
+<label for="opponent" > Choisissez votre adversaire </label>
+<div class="controls">
+<select name="opponent">
+<option value="cpu1"> Captain America </option>
+<option value="cpu2"> The supergirl </option>
+<option value="cpu3" selected> The catwoman </option>
+<option value="cpu4"> Blade </option>
+<option value="cpu5"> The punisher </option>
 </select>
-</li>
-</ul>
+</div>
+</div>
 
-<a href="#" class="start-button"> Commencer partie </a>
-
+<div class="control-group">
+<div class="controls">
+<a href="#" class="button"> Commencer partie </a>
+</div>
+</div>
 
 </form>
-</div>
+<a href ="#" class = "start-button" onClick="showMenuPrincipal()"> <-- retour au menu principal </a>
 </div>
 </div>
 
-
+</div>
 </div>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="../js/vendor/jquery-1.9.0.min.js"><\/script>')</script>
