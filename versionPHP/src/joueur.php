@@ -6,23 +6,29 @@ class Joueur
 {
 	
 	private  $pays ;
-	private   $pseudo;
+	private  $pseudo;
 	private $langue;
 	private $actif = false;
+	private $opppays ;
 
 	/**
 	*Construir a partir des information de la base de données
 	*/
-	public function __construct($idUser)
+	public function __construct($user,$pays,$langue)
 	{
-		include("./Connexion/conex.php");
+		
+			
+			$this->pseudo = $user;
+			$this->pays = $pays;
+			$this->langue = $langue;
+		/*
 		$mysqli  = connexion();
 		if ($result = $mysqli->query("SELECT * FROM joueurs WHERE  id = '$idUser'", MYSQLI_USE_RESULT))
 		{
 			
 			$infoUser = mysqli_fetch_assoc($result);
 			$this->pseudo = $infoUser['userName'];
-			$this->pays = $infoUser['pays'];
+			$this->pays = "Senegal";//$infoUser['pays'];//TODO
 			$this->langue = $infoUser['langue'];
 		}
 		else
@@ -30,7 +36,7 @@ class Joueur
 			echo"<br>impossible d'Executer la requette ". mysql_error()."<br>";
 			exit;
 		}
-		
+	*/	
 	}
 	
 	/**
@@ -89,15 +95,22 @@ class Joueur
 	*choisir le pays
 	*/
 	
-	public function choisisPays(string $pays, array $listePays)
+	public function choisirPays( $pays, $jeu)
 	{
 		//verifier si le pays choisi est valide
-		if(in_array($pays, $listePays))
+		$listePays = $jeu->getListePays();
+		
+	
+		if(in_array(strtolower($pays), $listePays))
 		{
+			echo" trouvé";
 			return true;
 		}
 		else
-		return false;
+		{
+			echo" pas trouve";
+			return false;
+		}
 	}
 		
 	/**
@@ -108,10 +121,10 @@ class Joueur
 	*lettre - la lettre demandé
 	*autre -  l'adversaire.
 		*/
-	public function asTu(string $lettre, joueur $adversaire)
+	public function asTu( $lettre, Joueur $adversaire)
 	{
 		$lettres = array();
-		$paysAdeversaire  = str_split($adversaire.pays);
+		$paysAdeversaire  = str_split($adversaire->getOpppays());
 		$i = 0;
 		foreach($paysAdeversaire as &$value)
 		{
@@ -124,7 +137,7 @@ class Joueur
 				
 		}
 		
-		return str_split($lettre );
+		return $lettres;
 		
 		
 		
@@ -138,7 +151,7 @@ class Joueur
 		 */
 	public function estCeTonPays($pays, $adversaire)
 	{
-		return (strcmp($pays, $adversaire.pays));
+		return (strcmp($pays, $adversaire->getPays()));
 	}
 	
 	/**
@@ -155,8 +168,12 @@ class Joueur
 	   */
 	public function  initiateOppInfo($adversaire)
     {
-		for($i = 0; $i<strlen($adversaire.pays); ++$i); 
-        $this->opppays = $this->opppays.join('?');
+		$opppaysArray = array();
+		
+		for($i = 0; $i<strlen($adversaire->getPays()); ++$i) 
+        	array_push($opppaysArray,'?');
+		$this->opppays = implode("", $opppaysArray);
+		
 	}
 	
 	/**
@@ -172,7 +189,8 @@ class Joueur
 	
 	public function getLenOpppays()
 	{
-		return mb_substr_count($this->opppays , '?');
+		//$opppaysStr = $this->opppays;
+		return strlen($this->opppays); // mb_substr_count($opppaysStr , '?');
 	}
 	
 }
