@@ -37,6 +37,18 @@
 <div id="ecran-geant">
 <span>Johny prêt à t'affronter</span>
 </div>
+<div id="playing-ground">
+<span> Ton pays: <strong>REPUBLIQUE DEMOCRATIQUE DU CONGO </strong> </span><br/><br/>
+    <div id="statut-label-div">
+	<span id="statut-label">Son pays</span>
+    </div>
+    <div id="statut-div">
+     <span class="letter">?</span><span class="letter">?</span><span class="letter">?</span><span class="letter">?</span><span class="letter">?</span><span class="letter">?</span>
+    </div>
+    <div id="play-input">
+    <input class="ask-input" type="text" name="letter" placeholder="Entrez la lettre à demander ou le pays trouvé ici!"><a class="ask-button" href="#" onClick="JoueurPlay()"> Jouer </a>
+    </div>
+</div>
 </div>
 <div id="start-div">
 <form id="start-form">
@@ -62,7 +74,7 @@
 
 <div class="control-group">
 <div class="controls">
-<a href="#" class="button"> Commencer partie </a>
+<a href="#" class="button" onClick="startGame()"> Commencer partie </a>
 </div>
 </div>
 

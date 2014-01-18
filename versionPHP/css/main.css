@@ -117,14 +117,16 @@ a
 }
 #header h1
 {
-	font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif;
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
 	font-weight:bold;
+	font-style:italic;
 	color:#C33;
 }
 
 #welcome-div
 {
 	text-align:center;
+	margin-top: 100px;
 	
 }
 #welcome-div li{
@@ -210,22 +212,53 @@ li.button:active, a.button:active
 
 #central-content
 {
-	max-width:400px;
+	max-width:500px;
 	margin-right:auto;
 	margin-left:auto;
 	
 }
 
 #ecran-geant{
-	background-color:#CCC;
-	border:3px;
-	border-radius:25px;
+	text-align:center;
+	background-color:#333;
+	color:white;
+	border:3px solid #CCC;
+	border-radius: 50% / 10%;
+	/*border-radius:25px; */
 	min-height:150px;
-	display:none;
+	padding:30px;
 
+}
+#statut-label-div
+{
+	text-align:left;
+}
+#statut-label
+{
+	border: 3px solid #F00;
+	padding:3px;
+}
+#statut-div
+{
+	border: 3px solid #F00;
+	margin:0px 0px 50px 0px;
+	padding:10px 3px 10px 3px;
+	
+}
+
+#playing-ground
+{
+	padding:30px;
+	background-color:#CCC;
+	border:2px solid #333;
+}
+#play-input
+{
+	
 }
 
 #game-panel{
+	text-align:center;
 	display:none;
 }
 
@@ -246,7 +279,6 @@ li.button:active, a.button:active
 	padding-bottom:15px;
 	
 }
-
 
 
 input, textarea, select{  
@@ -273,6 +305,7 @@ input:focus, textarea:focus {
     -moz-border-radius: 5px; 
     }  
 
+
 .control-group
 {
 	display:block;
@@ -285,7 +318,52 @@ input:focus, textarea:focus {
 .clearfix {
 	
 }
+.letter
+{
+	padding:0px 2px 0px 2px;
+}
 
+.ask-button
+{
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	color: #ffffff;
+	padding: 10px 20px;
+	width:100%;
+	
+	background: -moz-linear-gradient(
+		top,
+		#f0f0f0 0%,
+		#b8b8b8 25%,
+		#6b6b6b 75%,
+		#757175);
+	background: -webkit-gradient(
+		linear, left top, left bottom,
+		from(#f0f0f0),
+		color-stop(0.25, #b8b8b8),
+		color-stop(0.75, #6b6b6b),
+		to(#757175));
+	border: 3px solid #171717;
+	-moz-box-shadow:
+		0px 1px 3px rgba(000,000,000,0.5),
+		inset 0px 0px 10px rgba(087,087,087,0.7);
+	-webkit-box-shadow:
+		0px 1px 3px rgba(000,000,000,0.5),
+		inset 0px 0px 10px rgba(087,087,087,0.7);
+	box-shadow:
+		0px 1px 3px rgba(000,000,000,0.5),
+		inset 0px 0px 10px rgba(087,087,087,0.7);
+	text-shadow:
+		0px -1px 0px rgba(000,000,000,0.4),
+		0px 1px 0px rgba(255,255,255,0.3);
+}
+.ask-input
+{
+	border: 3px solid #171717;
+	font-size: 14px;
+	padding: 10px 20px;
+	width:300px;
+}
 
 
 

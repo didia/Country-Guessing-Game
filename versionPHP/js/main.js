@@ -1,4 +1,5 @@
 CPU_NAMES_ARRAY = new Array("Captain America", "The supergirl", "The catwoman", "Blade", "The punisher")
+var Judge = new Judge();
 
 function showStartForm()
 {
@@ -16,9 +17,20 @@ function showMenuPrincipal()
 	$("#welcome-div").show();
 }
 
+function startGame()
+{
+	$("#start-div").hide();
+	$("#welcome-div").hide();
+	$("#game-panel").show();
+	var myFormData = $("#start-form").serializeArray();
+	Judge.startNewGame(myFormData.pseudo, myFormData.opponent, "fr", false);
+	
+	
+}
+
 var Player = function(name)
 {
-
+	this.name = name
 }
 
 Player.prototype = {
@@ -37,6 +49,10 @@ Player.prototype = {
 	askOpponent: function(requete)
 	{
 		
+	},
+	getName: function()
+	{
+		return this.name;
 	}
 
 }
@@ -51,10 +67,10 @@ Cpu.prototype = new Player();
 
 Cpu.prototype.constructor = Cpu;
 
-var JeuDePays = function(pseudo , oponent_name, language, remote, judge)
+var JeuDePays = function(pseudo , oponent_level, language, remote, judge)
 {
 	this.player1 = new Player(pseudo);
-	this.cpu = new Cpu(oponent_name);
+	this.cpu = new Cpu(oponent_level);
 	this.winner = null;
 	this.tour = 0;
 	this.language = language;
@@ -182,6 +198,7 @@ JeuDePays.prototype =
 		}
 
 	},
+	
 
 	endGame:function()
 	{
@@ -200,9 +217,10 @@ Judge.prototype =
 {
 	constructor: Judge,
 
-	startNewGame: function(pseudo , oponent_name, language, remote)
+	startNewGame: function(pseudo , oponent_level, language, remote)
 	{
-		this.jeu = JeuDePays(pseudo, oponent_name, language, remote, this);
+		this.jeu = JeuDePays(pseudo, oponent_level, language, remote, this);
+		alert(this.jeu.cpu.name);
 	},
 
 	getPays: function(player1, message)
