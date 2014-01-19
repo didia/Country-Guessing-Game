@@ -1,3 +1,5 @@
+var CPU_NAMES_ARRAY = new Array("Captain America", "The supergirl", "The catwoman", "Blade", "The punisher")
+
 var Player = function(name)
 {
 	this.name = name;
