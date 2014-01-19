@@ -26,7 +26,7 @@ Player.prototype = {
 
 	choisirPays: function(pays)
 	{
-		if(COUNTRIES.indexOf(pays > -1))
+		if(COUNTRIES.indexOf(pays) > -1)
 		{
 			this.pays = pays;
 			return true;
@@ -65,16 +65,22 @@ Player.prototype = {
 
 	updateOppInfo: function(requete, reponse)
 	{
+		var that = this;
 		reponse.forEach(function(position)
 		{
-			this.oppPays[position] = requete;
-			this.alreadyDecouverte += 1;
+			that.oppPays[position] = requete;
+			that.alreadyDecouverte += 1;
 		});
 	},
 	
 	getName: function()
 	{
 		return this.name;
+	},
+	
+	getPays: function()
+	{
+		return this.pays;
 	},
 	
 	getCountryLength: function()
@@ -120,12 +126,12 @@ Cpu.prototype.isTimeToGuess = function()
 		var regex = this.oppPays.join('');
 		regex = regex.replace('?', '.');
 		regex = '/' + regex + '/';
-
+		var that = this;
 		COUNTRIES.forEach(function(country)
 		{
 			if(country.match(regex))
 			{
-				this.matchedCountries.push(country);
+				that.matchedCountries.push(country);
 			}
 		});
 		return true;
@@ -199,6 +205,7 @@ JeuDePays.prototype =
 				{
 					player1.updateOppInfo(requete, reponse);
 					var article;
+					
 					if(reponse.length != 1)
 					{
 						article = " aux positions "
@@ -206,6 +213,11 @@ JeuDePays.prototype =
 					else
 					{
 						article = " à la position "
+					}
+					
+					for(var i = 0; i<reponse.length; i++)
+					{
+						reponse[i] += 1;
 					}
 
 					var message = "Mon pays a " + requete + article + reponse.join(" ");
@@ -236,6 +248,10 @@ JeuDePays.prototype =
 
 	},
 	
+	setWinner:function(player1)
+	{
+		this.winner = player1;
+	},
 
 	endGame:function()
 	{

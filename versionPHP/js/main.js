@@ -109,7 +109,8 @@ Judge.prototype =
 
 	annonceWinner: function(winner)
 	{
-		
+		$("#ecran-geant").html("<span> Le gagnant est: <strong>" + winner.getName() + "</strong> <br/><br/></span>" +
+							   "<span> Son pays était :<strong>" + winner.getPays() + "</strong></span>");
 	},
 	
 	refreshScreen: function()
@@ -145,4 +146,3 @@ Judge.prototype =
 }
 
 var judge = new Judge();
-

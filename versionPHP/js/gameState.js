@@ -17,7 +17,7 @@ IdleState = function(jeu)
 	this.jeu = jeu;
 }
 
-IdleState = Object.create(GameState.prototype);
+IdleState.prototype = Object.create(GameState.prototype);
 
 
 PlayingState = function(jeu)
