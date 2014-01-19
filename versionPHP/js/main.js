@@ -33,7 +33,7 @@ function startGame()
 function JoueurPlay()
 {
 	currentRequest = $("#ask-input input[name = request]").val();
-	judge.sendRequest(currentRequest);
+	judge.sendRequest(currentRequest.toUpperCase());
 	$("#ask-input")[0].reset();
 	
 	return false;
@@ -114,12 +114,29 @@ Judge.prototype =
 	
 	refreshScreen: function()
 	{
+		var oppPays = this.jeu.getOppPays();
+		if(oppPays)
+		{
+			$("#statut-div").html("");
+			oppPays.forEach(function(letter)
+			{
+				$("#statut-div").append("<span class='letter'>" + letter + "</span>");
+			});
+		}
+		
+		$("#ecran-geant").html("");
 		if(this.screenLog.length < 5)
 		{
 			this.screenLog.forEach(function(entry)
 			{
-				alert(entry);
-				$("#ecran-geant").append("<span>"+entry+"</span>");
+				$("#ecran-geant").append("<br/><span>"+entry+"</span>");
+			});
+		}
+		else
+		{
+			this.screenLog.slice(this.screenLog.length-5).forEach(function(entry)
+			{
+				$("#ecran-geant").append("<br/><span>"+entry+"</span>");
 			});
 		}
 		

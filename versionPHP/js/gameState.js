@@ -40,7 +40,7 @@ PlayingState.prototype.checkEndOfGame = function()
 }
 PlayingState.prototype.processRequest = function(request)
 {
-	this.jeu.judge.disableInputFor(this.player1);
+	this.jeu.judge.disableInputFor(this.jeu.player1);
 	
 	if(request == null || request == '')
 	{
@@ -48,7 +48,7 @@ PlayingState.prototype.processRequest = function(request)
 	}
 	else
 	{
-		this.jeu.processRequeteFrom(this.jeu.player1, request);
+		this.jeu.processRequeteFrom(this.jeu.player1, this.jeu.cpu, request);
 	}
 	
 	if (this.checkEndOfGame())
@@ -58,14 +58,14 @@ PlayingState.prototype.processRequest = function(request)
 	
 	
 	cpuRequete = this.jeu.cpu.getNextRequest();
-	this.jeu.processRequeteFrom(this.jeu.cpu, cpuRequete)
+	this.jeu.processRequeteFrom(this.jeu.cpu, this.jeu.player1, cpuRequete)
 	
 	if(this.checkEndOfGame())
 	{
 		return;
 	}
 	
-	this.jeu.judge.enableInputFor(this.player1, " C'est ton tour de jouer");
+	this.jeu.judge.enableInputFor(this.jeu.player1, " C'est ton tour de jouer");
 	
 
 }
@@ -85,9 +85,13 @@ WaitingCountryState.prototype.processRequest= function(request)
 	{
 		this.jeu.cpu.choisirPays();
 		this.jeu.judge.sayMessageFrom(this.jeu.cpu, "Mon pays a " + this.jeu.cpu.getCountryLength() + " lettres");
-		this.jeu.player1.setOpponent(this.jeu.cpu);
-		this.jeu.cpu.setOpponent(this.jeu.player1);
+		
+		this.jeu.player1.setOpponent(this.jeu.cpu.getCountryLength());
+		
+		this.jeu.cpu.setOpponent(this.jeu.player1.getCountryLength());
+		
 		this.jeu.state = new PlayingState(this.jeu);
+		
 		this.jeu.judge.enableInputFor(this.jeu.player1, "À vous de commencer, Demandez une lettre ou devinez le pays!");
 	}
 	else
