@@ -106,6 +106,11 @@ Judge.prototype =
 		this.jeu.sendRequest(request);
 		
 	},
+	
+	writePlayerCountry: function(country)
+	{
+		$("#player-country").text(country);
+	},
 
 	annonceWinner: function(winner)
 	{

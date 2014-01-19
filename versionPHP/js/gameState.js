@@ -87,7 +87,7 @@ WaitingCountryState.prototype.processRequest= function(request)
 		this.jeu.judge.sayMessageFrom(this.jeu.cpu, "Mon pays a " + this.jeu.cpu.getCountryLength() + " lettres");
 		
 		this.jeu.player1.setOpponent(this.jeu.cpu.getCountryLength());
-		
+		this.jeu.judge.writePlayerCountry(this.jeu.player1.getPays());
 		this.jeu.cpu.setOpponent(this.jeu.player1.getCountryLength());
 		
 		this.jeu.state = new PlayingState(this.jeu);
