@@ -33,7 +33,9 @@ function startGame()
 function JoueurPlay()
 {
 	currentRequest = $("#ask-input input[name = request]").val();
+	judge.sendRequest(currentRequest);
 	$("#ask-input")[0].reset();
+	
 	return false;
 }
 
@@ -41,6 +43,9 @@ function JoueurPlay()
 var Judge = function()
 {
 	this.screenLog = [];
+	this.timerID = null;
+	this.inputEnabled = true;
+	
 }
 
 Judge.prototype = 
@@ -50,19 +55,12 @@ Judge.prototype =
 	startNewGame: function(pseudo , oponent_level, language, remote)
 	{
 		this.jeu = new JeuDePays(pseudo, oponent_level, language, remote, this);
-		this.jeu.play();
+		this.jeu.start();
 	},
 
-	getPays: function(player1, message)
+	askPays: function(player1, message)
 	{
 		this.says(player1.getName() + "  " + message);
-		pays= currentRequest;
-		while(pays == null)
-		{
-			pays = currentRequest
-		}
-		currentRequest = null;
-		return pays;
 	},
 
 	says: function(message)
@@ -79,11 +77,33 @@ Judge.prototype =
 
 	enableInputFor: function(player, message)
 	{
+		this.inputEnabled = true;
+		this.sayMessageFrom(player, message);
+		this.timerId = setTimeout(function()
+		{
+			this.jeu.sendRequest(null);
+				
+		}, 60000);
+		
 		
 	},
 
 	disableInputFor: function(player, message)
 	{
+		this.inputEnabled = false;	
+	},
+	
+	sendRequest : function(request)
+	{
+		if(!this.inputEnabled)
+		{
+			return;
+		}
+		if(this.timerId)
+		{
+			clearTimeout(this.timerId);
+		}
+		this.jeu.sendRequest(request);
 		
 	},
 

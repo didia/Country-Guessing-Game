@@ -40,6 +40,7 @@ Cpu.prototype = Object.create(Player.prototype);
 
 Cpu.prototype.constructor = Cpu;
 
+
 var JeuDePays = function(pseudo , oponent_level, language, remote, judge)
 {
 	this.player1 = new Player(pseudo);
@@ -49,8 +50,10 @@ var JeuDePays = function(pseudo , oponent_level, language, remote, judge)
 	this.language = language;
 	this.remote = remote;
 	this.judge = judge;
-	this.current_requete = null;
+	this.state = new WaitingCountryState(this);
 };
+
+
 
 JeuDePays.prototype = 
 {
@@ -61,66 +64,15 @@ JeuDePays.prototype =
 	
 	},
 	
-	play : function()
+	sendRequest : function(request)
 	{
-		this.cpu.choisirPays();
-		pays = this.judge.getPays(this.player1, "Entrez votre pays");
-		while (!this.player1.choisirPays(pays)) 
-		{
-			this.judge.says("Nous n'avons pas trouvé le pays que vous avez choisi");
-			pays = this.judge.getPays(this.player1, "Choisissez un nouveau pays (ignorez les accents)");
-		}
-		this.judge.sayMessageFrom(this.cpu, "Mon pays a " + this.cpu.getCountryLength() + " lettres");
-		this.player1.setOpponent(this.cpu);
-		this.cpu.setOpponent(this.player1);
-		
-		while(true)
-		{
-			var timeout;
-			var requete;
-			this.judge.enableInputFor(this.player1, "Votre tour de jouer");
-			this.timerId = setTimeout(function()
-			{
-				this.judge.disableInputFor(this.player1, "Le temps s'est écroulé, Votre tour passe!")
-				timeout = true;
-			}, 
-			60000);
-			while(!timeout && !this.current_requete)
-			{
-			}
-			
-			requete = this.current_requete;
-			this.current_requete = null;
-
-			if(requete)
-			{
-				this.processRequeteFrom(this.player1, requete);
-			}
-			else
-			{
-				this.judge.says(this.player1.name + " passe la main.");
-				
-			}
-			
-			if (this.winner)
-			{
-				this.endGame();
-				break;
-			}
-
-			cpuRequete = this.cpu.getNextRequest()
-
-			this.processRequeteFrom(this.cpu, cpuRequete)
-
-			if (this.winner)
-			{
-				this.endGame();
-				break;
-			}
-
-		}
+		this.state.processRequest(request);
+	},
 	
-		
+	start : function()
+	{
+		this.judge.askPays(this.player1, "Entrez votre pays");
+	
 	},
 
 	processRequeteFrom: function(player, requete)
