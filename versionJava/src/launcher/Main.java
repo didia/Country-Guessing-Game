@@ -1,5 +1,5 @@
 package launcher;
-import interfaces.WelcomeFrame;
+import interfaces.MainFrame;
 
 public class Main {
 
@@ -7,7 +7,7 @@ public class Main {
 	javax.swing.SwingUtilities.invokeLater(new Runnable(){
 
 		public void run() {
-			new WelcomeFrame();
+			new MainFrame();
 		}
 		
 	});
